@@ -1,0 +1,9 @@
+CREATE DOMAIN D_LOGICAL AS
+CHAR(1)
+DEFAULT 'F'
+NOT NULL
+CHECK (VALUE IN ('T', 'F'));
+
+DESCRIBE DOMAIN D_LOGICAL
+'Logikai típus, T és F értékekkel';
+

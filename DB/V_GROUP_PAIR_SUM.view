@@ -1,0 +1,17 @@
+CREATE VIEW V_GROUP_PAIR_SUM(
+    M_NAME,
+    S_NAME,
+    FULL_NAME,
+    CP_IDENT,
+    INCOME,
+    PAYMENT,
+    BALANCE)
+AS
+select distinct p.m_name, p.s_name, p.full_name, p.cp_ident,
+    sum(o.hc_income), sum(o.hc_payment), sum(o.hc_income-o.hc_payment)
+  from t_operation o join v_pair p
+    on o.cp_ident=p.cp_ident
+  group by p.m_name, p.s_name, p.cp_ident, p.full_name
+;
+
+

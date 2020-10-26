@@ -1,0 +1,24 @@
+CREATE VIEW IV_GROUP_PAIR_SUM_PER(
+    M_NAME,
+    S_NAME,
+    FULL_NAME,
+    CP_IDENT,
+    ACCOUNT,
+    INCOME,
+    PAYMENT,
+    BALANCE,
+    ACTMONTH,
+    OPERATION,
+    TRANS_ID,
+    PROJECT)
+AS
+select p.m_name, p.s_name, p.full_name, p.cp_ident,
+    --case p.summed when 'T' then 'SUM' else o.account end account,
+    o.account,
+    o.hc_income, o.hc_payment, o.hc_income-o.hc_payment,
+    o.actmonth, o.operation, o.trans_id, o.project
+  from t_operation o
+    join v_pair p on o.cp_ident=p.cp_ident
+;
+
+

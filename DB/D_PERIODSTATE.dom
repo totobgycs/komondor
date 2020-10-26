@@ -1,0 +1,9 @@
+CREATE DOMAIN D_PERIODSTATE AS
+CHAR(1)
+CHECK (value in ('C', 'A', 'P'));
+
+DESCRIBE DOMAIN D_PERIODSTATE
+'C - Closed
+A - Active
+P - Planed';
+

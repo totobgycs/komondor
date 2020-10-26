@@ -1,0 +1,21 @@
+CREATE VIEW V_CAR_ADD(
+    TRANS_DATE,
+    FULL_NAME,
+    HC_COST,
+    KM,
+    FUEL,
+    FULLTANK,
+    M_NAME,
+    S_NAME,
+    PROJECT,
+    ACTMONTH)
+AS
+select t.trans_date, p.full_name, o.hc_payment-o.hc_income,
+    oa.km, oa.fuel, oa.fulltank, p.m_name, p.s_name, o.project, o.actmonth
+  from t_oper_add oa
+    join t_operation o on oa.operation=o.operation
+    join t_transaction t on oa.trans_id=t.trans_id
+    join v_pair p on o.cp_ident=p.cp_ident
+;
+
+

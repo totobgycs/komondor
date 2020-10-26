@@ -1,0 +1,31 @@
+CREATE VIEW V_FULL_OPER(
+    OPERATION,
+    TRANS_ID,
+    CURRENCY,
+    INCOME,
+    PAYMENT,
+    ACCOUNT,
+    CP_IDENT,
+    BLABLA,
+    ACC_INCOME,
+    ACC_PAYMENT,
+    ACC_RATE,
+    HC_INCOME,
+    HC_PAYMENT,
+    HC_RATE,
+    ACTMONTH,
+    PROJECT,
+    KM,
+    FUEL,
+    FULLTANK)
+AS
+select o.operation, o.trans_id, o.currency, o.income, o.payment, o.account,
+    o.cp_ident, o.blabla, o.acc_income, o.acc_payment, o.acc_rate, o.hc_income,
+    o.hc_payment, o.hc_rate, o.actmonth, o.project,
+    a.km, a.fuel, a.fulltank
+  from t_operation o
+    left outer join t_oper_add a
+      on (o.operation=a.operation and o.trans_id = a.trans_id)
+;
+
+

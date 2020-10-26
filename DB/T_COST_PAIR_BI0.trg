@@ -1,0 +1,7 @@
+CREATE TRIGGER T_COST_PAIR_BI0 FOR T_COST_PAIR
+ACTIVE BEFORE INSERT POSITION 0
+AS
+begin
+  new.cp_ident = gen_id(gen_cp, 1);
+end
+^

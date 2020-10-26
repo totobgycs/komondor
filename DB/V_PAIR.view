@@ -1,0 +1,17 @@
+CREATE VIEW V_PAIR(
+    CP_IDENT,
+    M_NAME,
+    S_NAME,
+    FULL_NAME,
+    SUMMED,
+    ADD_INFO_FRAME)
+AS
+select
+    p.cp_ident, m.name, s.name, m.name || ' / ' || s.name, p.summed, a.frame_class
+  from t_cost_pair P
+    join t_cost_group_main M on p.mcg_ident = m.mcg_ident
+    join t_cost_group_sec S on p.scg_ident = s.scg_ident
+    join s_addons A on p.addon_id = a.addon_id
+;
+
+

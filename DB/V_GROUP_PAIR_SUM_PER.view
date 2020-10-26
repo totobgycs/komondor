@@ -1,0 +1,20 @@
+CREATE VIEW V_GROUP_PAIR_SUM_PER(
+    M_NAME,
+    S_NAME,
+    FULL_NAME,
+    CP_IDENT,
+    ACCOUNT,
+    INCOME,
+    PAYMENT,
+    BALANCE,
+    ACTMONTH,
+    PROJECT)
+AS
+select m_name, s_name, full_name, cp_ident, account,
+    sum(income), sum(payment), sum(balance),
+    actmonth, project
+  from iv_group_pair_sum_per
+  group by m_name, s_name, full_name, cp_ident, account, actmonth, project
+;
+
+

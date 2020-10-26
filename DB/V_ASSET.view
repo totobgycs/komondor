@@ -1,0 +1,26 @@
+CREATE VIEW V_ASSET(
+    ACCOUNT,
+    ACC_INC,
+    ACC_PAY,
+    ACC_BAL,
+    HC_INC,
+    HC_PAY,
+    HC_BAL,
+    CURR)
+AS
+select A.ACCOUNT,
+    sum(acc_INCOME) as acc_INC,
+    sum(acc_PAYMENT) as acc_PAY,
+    sum(acc_INCOME-acc_PAYMENT) as acc_BAL,
+    sum(hc_INCOME) as hc_INC,
+    sum(hc_PAYMENT) as hc_PAY,
+    sum(hc_INCOME-hc_PAYMENT) as hc_BAL,
+    A.CURRENCY
+  from t_account A left outer join t_operation O
+    on o.account = a.account
+  where
+    A.is_open = 'T'
+  group by A.ACCOUNT, CURRENCY
+;
+
+

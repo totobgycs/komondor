@@ -1,0 +1,7 @@
+CREATE TRIGGER T_ACT_DEBITS_BI0 FOR T_ACT_DEBITS
+ACTIVE BEFORE INSERT POSITION 0
+AS
+begin
+    new.actdebid = gen_id(gen_actdeb,1);
+end
+^

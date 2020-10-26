@@ -1,0 +1,6 @@
+CREATE DOMAIN D_NAME AS
+VARCHAR(50);
+
+DESCRIBE DOMAIN D_NAME
+'Nevekre használatos';
+

@@ -1,0 +1,20 @@
+CREATE VIEW V_ACCOUNTLIST(
+    TRANS_ID,
+    TRANS_DATE,
+    ACCOUNT,
+    INC,
+    PAY,
+    ACC_INC,
+    ACC_PAY,
+    HC_INC,
+    HC_PAY)
+AS
+select o.TRANS_ID, t.trans_date, o.account,
+    sum(o.income), sum(o.payment),
+    sum(o.acc_income), sum(o.acc_payment),
+    sum(o.hc_income), sum(o.hc_payment)
+  from t_operation o join t_transaction t on o.TRANS_ID =t.TRANS_ID
+  group by o.account, t.trans_date, o.TRANS_ID
+;
+
+

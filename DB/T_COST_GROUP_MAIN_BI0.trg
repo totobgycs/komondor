@@ -1,0 +1,7 @@
+CREATE TRIGGER T_COST_GROUP_MAIN_BI0 FOR T_COST_GROUP_MAIN
+ACTIVE BEFORE INSERT POSITION 0
+AS
+begin
+  new.mcg_ident = gen_id(gen_mcg,1);
+end
+^

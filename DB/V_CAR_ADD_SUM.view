@@ -1,0 +1,15 @@
+CREATE VIEW V_CAR_ADD_SUM(
+    M_NAME,
+    S_NAME,
+    HC_COST,
+    FUEL,
+    LAST_DATE,
+    PROJECT,
+    ACTMONTH)
+AS
+select M_Name, s_name, sum(hc_cost), sum(fuel), max(Trans_date), project, actmonth
+  from v_car_add
+  group by M_Name, s_name, project, actmonth
+;
+
+

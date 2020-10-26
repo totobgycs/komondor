@@ -1,0 +1,7 @@
+CREATE TRIGGER T_GEN_DEBITS_BI0 FOR T_GEN_DEBITS
+ACTIVE BEFORE INSERT POSITION 0
+AS
+begin
+  new.gendebid = gen_id(gen_gendeb,1);
+end
+^
